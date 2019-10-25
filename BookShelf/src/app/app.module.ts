@@ -16,8 +16,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatProgressSpinnerModule, MatListModule, MatDialogModule } from '@angular/material';
+import { MatProgressSpinnerModule, MatListModule, MatDialogModule, MatPaginatorModule } from '@angular/material';
 import { AdzBookPopUpComponent } from './adz-book-pop-up/adz-book-pop-up.component';
+import { AdzBookFilteringComponent } from './adz-book-filtering/adz-book-filtering.component';
 
 
 
@@ -28,7 +29,8 @@ import { AdzBookPopUpComponent } from './adz-book-pop-up/adz-book-pop-up.compone
     AdzHeaderComponent,
     AdzSearchInputComponent,
     AdzSearchResultsComponent,
-    AdzBookPopUpComponent
+    AdzBookPopUpComponent,
+    AdzBookFilteringComponent
   ],
   entryComponents: [
     AdzBookPopUpComponent
@@ -46,7 +48,8 @@ import { AdzBookPopUpComponent } from './adz-book-pop-up/adz-book-pop-up.compone
     MatGridListModule,
     MatProgressSpinnerModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

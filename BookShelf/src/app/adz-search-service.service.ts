@@ -14,8 +14,9 @@ export class AdzSearchService {
     this.router.navigate(['/results']);
   }
 
-  searchRequest(searchWord: string) {
+  searchRequest(searchWord: string, pageNumber: number) {
+    const skip = (pageNumber * 10);
     return this.http
-      .get('https://www.googleapis.com/books/v1/volumes?q=' + searchWord);
+      .get('https://www.googleapis.com/books/v1/volumes?q=' + searchWord + '&startIndex=' + skip);
     }
 }

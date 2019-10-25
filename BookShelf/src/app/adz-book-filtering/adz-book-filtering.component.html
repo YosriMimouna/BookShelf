@@ -1,0 +1,10 @@
+<div>
+  <h4>Filter results:</h4>
+  <form #searchForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" ngModel name="searchWord" required #searchWordInput="ngModel" placeholder="Filter search results">
+      <mat-error *ngIf="searchWordInput.invalid">Please type in something ...</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="btn" type="button" (click)="onSearch(searchForm)">Select</button>
+  </form>
+</div>

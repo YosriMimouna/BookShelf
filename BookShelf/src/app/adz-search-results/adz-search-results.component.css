@@ -54,11 +54,20 @@ mat-list-item {
   height: 100px;
 }
 
+.return {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
 p {
   margin-left: 7px;
   word-wrap: break-word;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 600px;
+  width: 540px;
+}
+
+.filtr {
+  margin-left: 50px;
 }
