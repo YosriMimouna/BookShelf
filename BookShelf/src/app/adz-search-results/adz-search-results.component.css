@@ -1,0 +1,64 @@
+.btn {
+  margin: 10px;
+}
+
+ul {
+  list-style: none;
+  margin: 50px;
+  display: flex;
+}
+
+div {
+  margin: auto;
+}
+
+.pub {
+  margin: 5px;
+}
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-optionx {
+  height: 35px;
+}
+
+mat-spinner {
+  margin: auto;
+}
+/*
+mat-list-item {
+  padding-bottom: auto;
+}*/
+
+.text {
+  margin-left: 150px;
+  float: left;
+}
+
+.tl {
+  width: 150px;
+  height: 200px;
+}
+
+.image {
+  width: 150px;
+  height: 200px;
+}
+
+.mat-list-base {
+  padding-top: 0px;
+  margin-top: -15px;
+}
+
+.desc {
+  text-overflow: ellipsis;
+  width: 50%;
+  height: 100px;
+}
+
+p {
+  margin-left: 7px;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 600px;
+}

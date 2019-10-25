@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>{{book.title}}</h1>
+<div matdialog-content class="row">
+<!--
+  <table>
+    <tr>
+      <td>
+          <img src={{book.img}} alt="test" class="image">
+      </td>
+      <th>
+        Author(s):
+      </th>
+      <td *ngFor="let author of (book.authors)">
+          {{author}}
+      </td>
+    </tr>
+
+  </table>
+-->
+
+  <div class="column">
+      <img src={{book.img}} alt="test" class="image">
+  </div>
+  <div class="column">
+    <mat-list class="desc">
+      <mat-list-item>
+          <h4>Author(s):</h4>
+      </mat-list-item>
+      <mat-list-item *ngFor="let author of (book.authors)">
+        {{ author }}
+      </mat-list-item>
+      <mat-list-item>
+          <h4>Categories:</h4>
+      </mat-list-item>
+      <mat-list-item *ngFor="let category of (book.categories)">
+        {{ category }}
+      </mat-list-item>
+      <mat-list-item><h4 class="label">Publisher:</h4>{{book.publisher}}</mat-list-item>
+      <mat-list-item><h4 class="label">Page count:</h4>{{book.pageCount}}</mat-list-item>
+      <mat-list-item><h4>Description:</h4></mat-list-item>
+      <mat-list-item class="desc">{{ book.desc }}</mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Ok</button>
+</div>

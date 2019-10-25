@@ -1,0 +1,9 @@
+<div class="center">
+  <form (submit)="onSearch(searchForm)" #searchForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" ngModel name="searchWord" required #searchWordInput="ngModel" placeholder="Type your search here">
+      <mat-error *ngIf="searchWordInput.invalid">Please enter a keyword</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="btn" type="button" (click)="onSearch(searchForm)">Search</button>
+  </form>
+</div>

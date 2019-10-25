@@ -1,0 +1,9 @@
+.center {
+  display: flex;
+  margin:5rem;
+  width: 80%;
+}
+
+.btn {
+  margin: 10px;
+}
