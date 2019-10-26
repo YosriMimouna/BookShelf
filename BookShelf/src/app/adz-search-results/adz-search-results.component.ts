@@ -24,10 +24,15 @@ export class AdzSearchResultsComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.searchWord = localStorage.getItem('searchWord');
+    let filter = localStorage.getItem('filter');
+    let filterWord = localStorage.getItem('filterWord');
+    if (!(filter == undefined)) {
+      this.searchService.setQuery(filter, filterWord);
+    }
     this.bookSub = this.searchService.searchRequest(this.searchWord, this.currentPage - 1).subscribe((bookData) => {
       const countItems = 'totalItems';
       if (bookData.hasOwnProperty(countItems)) {
-        this.totalBooks = parseInt(bookData[countItems]);
+        this.totalBooks = Math.ceil(parseInt(bookData[countItems]) / 10);
       }
       let bookInstance: Book;
       const key = 'items';
@@ -82,11 +87,9 @@ export class AdzSearchResultsComponent implements OnInit {
     dialogConfig.minWidth = '700px';
     dialogConfig.data = book;
     this.bookDialog.open(AdzBookPopUpComponent, dialogConfig);
-    console.log(book);
   }
 
   onChangedPage(pageData: PageEvent) {
-    console.log(pageData);
     this.isLoading = true;
     if( pageData.previousPageIndex > pageData.pageIndex) {
       this.currentPage = this.currentPage - 1;

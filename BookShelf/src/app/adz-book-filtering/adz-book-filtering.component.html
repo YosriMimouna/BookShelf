@@ -1,10 +1,19 @@
 <div>
   <h4>Filter results:</h4>
-  <form #searchForm="ngForm">
+  <form (submit)="onSubmit(filterForm)" #filterForm="ngForm" >
     <mat-form-field>
-      <input matInput type="text" ngModel name="searchWord" required #searchWordInput="ngModel" placeholder="Filter search results">
+      <input matInput type="text" ngModel name="filterWord" required #searchWordInput="ngModel" placeholder="Filter search results">
       <mat-error *ngIf="searchWordInput.invalid">Please type in something ...</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="btn" type="button" (click)="onSearch(searchForm)">Select</button>
+    <mat-form-field class="filter">
+        <mat-label>Filter by:</mat-label>
+          <mat-select [(ngModel)]="selectedFilter" required #filter="ngModel" ngModel name="filter">
+            <mat-option *ngFor="let filter of filters" [value]="filter">
+              {{ filter }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="filter.hasError('required')">You must make a selection</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="btn" type="submit" >Select</button>
   </form>
 </div>

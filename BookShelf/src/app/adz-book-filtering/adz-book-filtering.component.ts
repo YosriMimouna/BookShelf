@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdzSearchService } from '../adz-search-service.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'adz-book-filtering',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdzBookFilteringComponent implements OnInit {
 
-  constructor() { }
+  private selectedFilter: string;
+  private filters = ['Author', 'Category'];
+  constructor(public searchService: AdzSearchService) { }
 
   ngOnInit() {
   }
 
+  onSubmit(filterForm: NgForm) {
+    if(!(filterForm.value.filterWord == '') && !(this.selectedFilter == undefined)) {
+      this.searchService.setSearchParams(filterForm.value.filterWord, this.selectedFilter);
+    }
+  }
 }

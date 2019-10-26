@@ -2,32 +2,37 @@
   <button mat-raised-button color="primary" class="btn" routerLink="/"> Return </button>
 </div>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="totalBooks > 0">
 
-<div *ngIf="!isLoading">
-  <div class="filtr">
-  <adz-book-filtering></adz-book-filtering>
+  <div *ngIf="!isLoading">
+    <div class="filtr">
+    <adz-book-filtering></adz-book-filtering>
+    </div>
+    <ul *ngFor="let book of bookList">
+      <li class="tl">
+          <div>
+          <img (click)="onClick(book)" src={{book.img}} alt="test" class="image">
+          </div>
+      </li>
+      <li>
+          <mat-list class="text">
+              <mat-list-item (click)="onClick(book)" ><h3>{{book.descTitle}}</h3></mat-list-item>
+              <mat-list-item><h5>Author(s):</h5></mat-list-item>
+              <mat-list-item *ngFor="let item of book.authors">
+              {{item}}
+              </mat-list-item>
+              <mat-list-item><h5>Categories:</h5></mat-list-item>
+              <mat-list-item *ngFor="let item of book.categories">
+              {{item}}
+              </mat-list-item>
+              <mat-list-item><h5 class="pub">Publisher:</h5> {{ book.publisher }}</mat-list-item>
+              <mat-list-item  class="desc"><h5>Description:</h5> <p> {{ book.desc }} </p></mat-list-item>
+          </mat-list>
+      </li>
+    </ul>
   </div>
-  <ul *ngFor="let book of bookList">
-    <li class="tl">
-        <div>
-        <img (click)="onClick(book)" src={{book.img}} alt="test" class="image">
-        </div>
-    </li>
-    <li>
-        <mat-list class="text">
-            <mat-list-item (click)="onClick(book)" ><h3>{{book.descTitle}}</h3></mat-list-item>
-            <mat-list-item><h5>Author(s):</h5></mat-list-item>
-            <mat-list-item *ngFor="let item of book.authors">
-            {{item}}
-            </mat-list-item>
-            <mat-list-item><h5>Categories:</h5></mat-list-item>
-            <mat-list-item *ngFor="let item of book.categories">
-            {{item}}
-            </mat-list-item>
-            <mat-list-item><h5 class="pub">Publisher:</h5> {{ book.publisher }}</mat-list-item>
-            <mat-list-item  class="desc"><h5>Description:</h5> <p> {{ book.desc }} </p></mat-list-item>
-        </mat-list>
-    </li>
-  </ul>
+  <mat-paginator [length]="totalBooks" [pageSize]="pageSize" (page)="onChangedPage($event)"></mat-paginator>
 </div>
-<mat-paginator [length]="totalBooks" [pageSize]="pageSize" (page)="onChangedPage($event)"></mat-paginator>
+<div *ngIf="totalBooks == 0">
+<h3 class="nrslt">No results found!</h3>
+</div>

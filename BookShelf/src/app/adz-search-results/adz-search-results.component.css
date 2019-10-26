@@ -71,3 +71,9 @@ p {
 .filtr {
   margin-left: 50px;
 }
+
+.nrslt {
+  position: relative;
+  margin-left: 300px;
+  margin-top: 50px;
+}
