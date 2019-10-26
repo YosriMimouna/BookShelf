@@ -15,7 +15,9 @@ export class AdzSearchInputComponent implements OnInit {
   }
 
   onSearch(form: NgForm) {
-    this.searchService.setSearchWord(form.value.searchWord);
+    if(!(form.value.searchWord == '')) {
+      this.searchService.setSearchWord(form.value.searchWord);
+    }
   }
 
 }

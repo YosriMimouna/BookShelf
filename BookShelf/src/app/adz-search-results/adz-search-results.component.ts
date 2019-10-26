@@ -44,7 +44,21 @@ export class AdzSearchResultsComponent implements OnInit {
             categories: book.volumeInfo.categories,
             pageCount: book.volumeInfo.pageCount
           };
-
+          if (bookInstance.desc == undefined) {
+            bookInstance.desc = 'No description available';
+          }
+          if (bookInstance.categories == undefined) {
+            bookInstance.categories = ['No category available'];
+          }
+          if (bookInstance.pageCount == undefined) {
+            bookInstance.pageCount = 'Not available';
+          }
+          if (bookInstance.authors == undefined) {
+            bookInstance.authors = ['Not available'];
+          }
+          if (bookInstance.publisher == undefined) {
+            bookInstance.publisher = 'Not available';
+          }
           if ( bookInstance.title.length > 180 ) {
             bookInstance.descTitle = bookInstance.title.substr(0, 179) + '...';
           }
@@ -72,14 +86,15 @@ export class AdzSearchResultsComponent implements OnInit {
   }
 
   onChangedPage(pageData: PageEvent) {
+    console.log(pageData);
     this.isLoading = true;
-    this.currentPage = this.currentPage + 1;
+    if( pageData.previousPageIndex > pageData.pageIndex) {
+      this.currentPage = this.currentPage - 1;
+    } else {
+      this.currentPage = this.currentPage + 1;
+    }
     this.bookList = [];
     this.bookSub = this.searchService.searchRequest(this.searchWord, this.currentPage - 1).subscribe((bookData) => {
-      const countItems = 'totalItems';
-      if (bookData.hasOwnProperty(countItems)) {
-        this.totalBooks = parseInt(bookData[countItems]);
-      }
       let bookInstance: Book;
       const key = 'items';
       if (bookData.hasOwnProperty(key)) {

@@ -11,22 +11,6 @@ export class AdzBookPopUpComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public book: any) { }
 
-  ngOnInit() {
-    if (this.book.desc == undefined) {
-      this.book.desc = 'No description available';
-    };
-    if (this.book.categories == undefined) {
-      this.book.categories = ['No category available'];
-    };
-    if (this.book.pageCount == undefined) {
-      this.book.pageCount = 'Not available';
-    }
-    if (this.book.authors == undefined) {
-      this.book.authors = ['Not available'];
-    }
-    if (this.book.publisher == undefined) {
-      this.book.publisher = 'Not available';
-    }
-  }
+  ngOnInit() {}
 
 }
