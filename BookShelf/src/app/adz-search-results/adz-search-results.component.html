@@ -1,7 +1,7 @@
 <div class="return">
   <button mat-raised-button color="primary" class="btn" routerLink="/"> Return </button>
 </div>
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-spinner *ngIf="isLoading && totalBooks>0" ></mat-spinner>
 <div *ngIf="totalBooks > 0">
 
   <div *ngIf="!isLoading">
